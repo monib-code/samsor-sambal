@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+       Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total_blance', 15, 2);
+            $table->decimal('receive_in_invoice', 15, 2)->default(0);
             $table->timestamps();
         });
+
     }
 
     /**

@@ -11,10 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_customers', function (Blueprint $table) {
+       Schema::create('loan_customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('contact_number')->nullable();
+            $table->string('location')->nullable();
+            $table->text('address')->nullable();
+            $table->decimal('afn_blance', 15, 2)->default(0);
+            $table->decimal('pkr_blance', 15, 2)->default(0);
+            $table->decimal('usd_blance', 15, 2)->default(0);
+            $table->decimal('tom_blance', 15, 2)->default(0);
             $table->timestamps();
         });
+
     }
 
     /**

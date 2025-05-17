@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('customer_vouchers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->foreignId('currency_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**

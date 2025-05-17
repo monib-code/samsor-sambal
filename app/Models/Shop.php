@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'contact_number', 'address'];
+
+    public function customers() { return $this->hasMany(Customer::class); }
+    public function companies() { return $this->hasMany(Company::class); }
 }

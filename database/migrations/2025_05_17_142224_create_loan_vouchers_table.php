@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_vouchers', function (Blueprint $table) {
+       Schema::create('loan_vouchers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->foreignId('currency_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**

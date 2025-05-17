@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transfer_stocks', function (Blueprint $table) {
+       Schema::create('transfer_stocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('from_shop_id')->constrained('shops')->onDelete('cascade');
+            $table->foreignId('to_shop_id')->constrained('shops')->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**

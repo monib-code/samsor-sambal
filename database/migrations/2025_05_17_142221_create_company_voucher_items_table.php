@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('company_voucher_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_voucher_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->text('details')->nullable();
+            $table->decimal('payment', 15, 2)->default(0);
+            $table->decimal('receive', 15, 2)->default(0);
+            $table->decimal('total', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**

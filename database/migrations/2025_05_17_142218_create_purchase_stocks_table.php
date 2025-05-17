@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('purchase_stocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->foreignId('currency_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total_blance', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**

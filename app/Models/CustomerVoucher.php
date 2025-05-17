@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerVoucher extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['shop_id', 'currency_id', 'date', 'total'];
+
+    public function shop() { return $this->belongsTo(Shop::class); }
+    public function currency() { return $this->belongsTo(Currency::class); }
 }

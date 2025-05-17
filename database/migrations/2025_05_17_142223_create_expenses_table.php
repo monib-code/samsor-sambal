@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('expenses', function (Blueprint $table) {
+       Schema::create('expenses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('currency_id')->constrained()->onDelete('cascade');
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->date('date');
+            $table->decimal('total_blance', 15, 2);
             $table->timestamps();
         });
+
     }
 
     /**
