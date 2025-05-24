@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -11,7 +12,7 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //
+          return Currency::all();
     }
 
     /**
@@ -19,30 +20,30 @@ class CurrencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $currency = Currency::create($request->all());
+            return response()->json($currency, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(Currency $currency) {
+            return $currency;
+        }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request, Currency $currency) {
+            $currency->update($request->all());
+            return response()->json($currency);
+        }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy(Currency $currency) {
+            $currency->delete();
+            return response()->json(null, 204);
+        }
 }
