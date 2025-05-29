@@ -1,25 +1,29 @@
-import { DollarSign } from "lucide-react";
+import { useState } from "react";
+import FormInput from "../components/FormInput";
 
 const Currencies = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    symbol: "",
+    rate: "",
+  });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("ارز ثبت شد:", formData);
+  };
+
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4 text-teal-700 flex items-center gap-2">
-        <DollarSign size={20} /> مدیریت ارزها (Currencies)
-      </h2>
-
-      <form className="space-y-4 max-w-md mb-6">
-        <input className="w-full border p-2 rounded" placeholder="نام ارز (مثلاً: افغانی)" />
-        <input className="w-full border p-2 rounded" placeholder="نماد (مثلاً: AFN)" />
-        <input className="w-full border p-2 rounded" placeholder="نرخ به افغانی (مثلاً: 1)" />
-        <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">
-          ثبت ارز
-        </button>
+      <h2 className="text-xl font-semibold text-teal-700 mb-4">مدیریت ارزها</h2>
+      <form className="space-y-4 max-w-md" onSubmit={handleSubmit}>
+        <FormInput label="نام ارز" name="name" value={formData.name} onChange={handleChange} />
+        <FormInput label="نماد" name="symbol" value={formData.symbol} onChange={handleChange} />
+        <FormInput label="نرخ تبدیل به AFN" name="rate" value={formData.rate} onChange={handleChange} />
+        <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">ثبت ارز</button>
       </form>
-
-      <div className="bg-gray-100 p-4 rounded">
-        <p>AFN - افغانی - نرخ: 1</p>
-        <p>USD - دالر - نرخ: 87.5</p>
-      </div>
     </div>
   );
 };
