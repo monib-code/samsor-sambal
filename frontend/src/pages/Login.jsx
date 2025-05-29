@@ -1,24 +1,84 @@
-// src/pages/Login.jsx
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/dashboard"); // انتقال به داشبورد بعد از کلیک
+
+    if (isLogin) {
+      // 📥 Login Logic Here (e.g. API call)
+      console.log("Logging in:", formData);
+    } else {
+      // ✏️ Register Logic Here (e.g. API call)
+      console.log("Registering:", formData);
+    }
+
+    navigate("/dashboard");
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-teal-100">
-      <form onSubmit={handleLogin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-96">
-        <h2 className="text-2xl font-bold text-teal-700 mb-6 text-center">ورود به حساب</h2>
-        <input className="w-full p-2 border mb-4 rounded" type="text" placeholder="نام کاربری" />
-        <input className="w-full p-2 border mb-6 rounded" type="password" placeholder="رمز عبور" />
-        <button type="submit" className="w-full bg-teal-600 text-white p-2 rounded hover:bg-teal-700">
-          ورود
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-teal-100">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h2 className="text-2xl font-bold text-center text-teal-700 mb-4">
+          {isLogin ? "ورود به حساب" : "ساخت حساب ادمین"}
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="email"
+            name="email"
+            placeholder="ایمیل"
+            className="w-full border p-2 rounded"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="رمز عبور"
+            className="w-full border p-2 rounded"
+            onChange={handleChange}
+            required
+          />
+          <button
+            type="submit"
+            className="w-full bg-teal-600 text-white py-2 rounded hover:bg-teal-700"
+          >
+            {isLogin ? "ورود" : "ثبت‌نام"}
+          </button>
+        </form>
+
+        <div className="text-center mt-4 text-sm text-gray-600">
+          {isLogin ? (
+            <>
+              حساب نداری؟{" "}
+              <button
+                className="text-teal-600 hover:underline"
+                onClick={() => setIsLogin(false)}
+              >
+                ثبت‌نام کن
+              </button>
+            </>
+          ) : (
+            <>
+              قبلاً ثبت‌نام کردی؟{" "}
+              <button
+                className="text-teal-600 hover:underline"
+                onClick={() => setIsLogin(true)}
+              >
+                وارد شو
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
