@@ -1,15 +1,20 @@
+// src/components/DeveloperProfile.jsx
+
+import hamidImg from "../components/assets/hamid.jpg";
+import monibImg from "../components/assets/monib.png"; // اگر برای منیب عکس جدا داری، اسم فایلش رو بده تا جایگزین کنم
+
 const developers = [
   {
     name: "حمیدالله رحمانی",
     phone: "0791323424",
     email: "hamidrahmmani1003@gmail.com",
-    image: "https://randomuser.me/api/portraits/men/78.jpg",
+    image: hamidImg,
   },
   {
     name: "منیب الرحمان صدیقی",
     phone: "0789896997",
     email: "monib.dev@example.com",
-    image: "https://randomuser.me/api/portraits/men/44.jpg",
+    image: monibImg,
   },
 ];
 
