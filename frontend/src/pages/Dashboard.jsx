@@ -1,53 +1,77 @@
-import { Users, FileText, DollarSign, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  Users,
+  Building2,
+  FileText,
+  ShoppingCart,
+  Boxes,
+  Wallet,
+  HandCoins,
+  Landmark,
+} from "lucide-react";
 
 const Dashboard = () => {
+  const stats = [
+    {
+      title: "تعداد مشتری‌ها",
+      value: 126,
+      icon: <Users size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "تعداد شرکت‌ها",
+      value: 42,
+      icon: <Building2 size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "فاکتورهای صادرشده",
+      value: 87,
+      icon: <FileText size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "خریدها (Purchase)",
+      value: 54,
+      icon: <ShoppingCart size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "موجودی در گدام",
+      value: 320,
+      icon: <Boxes size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "کل مصارف",
+      value: "89,500 AFN",
+      icon: <Wallet size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "قرض مشتریان",
+      value: "15,000 AFN",
+      icon: <HandCoins size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+    {
+      title: "واچر شرکت‌ها",
+      value: 30,
+      icon: <Landmark size={28} className="text-teal-600 dark:text-teal-400" />,
+    },
+  ];
+
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-teal-700">داشبورد مدیریتی</h1>
+    <div>
+      <h2 className="text-2xl font-bold text-teal-700 dark:text-teal-400 mb-6">
+        داشبورد سیستم حسابداری
+      </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* مشتری‌ها */}
-        <div className="bg-white rounded shadow p-5 border-l-4 border-teal-600">
-          <div className="flex items-center justify-between">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white p-4 rounded-lg shadow-md flex items-center justify-between transition-colors"
+          >
             <div>
-              <h2 className="text-gray-500 text-sm">مشتری‌ها</h2>
-              <p className="text-xl font-semibold">152</p>
+              <p className="text-sm">{stat.title}</p>
+              <h3 className="text-2xl font-bold">{stat.value}</h3>
             </div>
-            <Users className="text-teal-600" size={32} />
+            <div>{stat.icon}</div>
           </div>
-          <Link to="/customers" className="text-sm mt-4 inline-flex items-center text-teal-700 hover:underline">
-            مدیریت مشتری‌ها <ArrowRight size={16} className="ml-1" />
-          </Link>
-        </div>
-
-        {/* فاکتورها */}
-        <div className="bg-white rounded shadow p-5 border-l-4 border-teal-600">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-gray-500 text-sm">فاکتورهای امروز</h2>
-              <p className="text-xl font-semibold">17</p>
-            </div>
-            <FileText className="text-teal-600" size={32} />
-          </div>
-          <Link to="#" className="text-sm mt-4 inline-flex items-center text-teal-700 hover:underline">
-            مشاهده فاکتورها <ArrowRight size={16} className="ml-1" />
-          </Link>
-        </div>
-
-        {/* موجودی کل */}
-        <div className="bg-white rounded shadow p-5 border-l-4 border-teal-600">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-gray-500 text-sm">موجودی کل</h2>
-              <p className="text-xl font-semibold">۱۲۳,۴۵۰ AFN</p>
-            </div>
-            <DollarSign className="text-teal-600" size={32} />
-          </div>
-          <Link to="#" className="text-sm mt-4 inline-flex items-center text-teal-700 hover:underline">
-            مشاهده جزئیات <ArrowRight size={16} className="ml-1" />
-          </Link>
-        </div>
+        ))}
       </div>
     </div>
   );

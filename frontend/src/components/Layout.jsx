@@ -4,7 +4,6 @@ import {
   Users, Home, PlusCircle, Building, Building2, Package, PackagePlus,
   FileText, FilePlus, ShoppingCart, Boxes, MoveRight, Wallet, HandCoins,
   ReceiptText, WalletCards, Landmark, DollarSign, Settings as SettingsIcon,
-  Moon, Sun
 } from "lucide-react";
 
 const Layout = () => {
@@ -47,17 +46,7 @@ const Layout = () => {
           <Link to="/settings" className="hover:bg-teal-700 p-2 rounded flex items-center gap-2"><SettingsIcon size={18} /> تنظیمات</Link>
         </nav>
 
-        {/* دارک مود toggle پایین منو */}
-        <div className="pt-4 border-t border-white/40 mt-4 flex justify-between items-center">
-          <span className="text-sm">حالت رنگ</span>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="bg-white text-teal-600 px-2 py-1 rounded hover:bg-teal-100 text-sm flex items-center gap-1"
-          >
-            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-            {darkMode ? "روشن" : "تاریک"}
-          </button>
-        </div>
+       
       </aside>
 
       <main className="flex-1 p-6 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">

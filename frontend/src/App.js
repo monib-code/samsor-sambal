@@ -24,6 +24,10 @@ import CustomerVoucher from "./pages/vouchers/CustomerVoucher";
 import CompanyVoucher from "./pages/vouchers/CompanyVoucher";
 import Currencies from "./pages/Currencies";
 import Settings from "./pages/Settings";
+import DeveloperProfile from "./pages/DeveloperProfile";
+
+
+
 
 
 
@@ -60,6 +64,7 @@ const App = () => {
         <Route path="/vouchers/company" element={<CompanyVoucher />} />
         <Route path="/currencies" element={<Currencies />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/developers" element={<DeveloperProfile />} />
       </Route>
     </Routes>
   );

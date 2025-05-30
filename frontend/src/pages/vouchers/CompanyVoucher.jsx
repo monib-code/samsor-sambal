@@ -1,33 +1,28 @@
-import { useState } from "react";
-import FormInput from "../../components/FormInput";
+import { Landmark } from "lucide-react";
 
-const CompanyVoucher = () => {
-  const [formData, setFormData] = useState({
-    company: "",
-    amount: "",
-    date: "",
-    note: "",
-  });
-
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("واچر شرکت:", formData);
-  };
+const CompanyVoucherList = () => {
+  const vouchers = [
+    { id: 1, company: "شرکت الف", amount: "3000" },
+    { id: 2, company: "شرکت ب", amount: "5000" },
+  ];
 
   return (
     <div>
-      <h2 className="text-xl font-semibold text-teal-700 mb-4">واچر شرکت</h2>
-      <form className="space-y-4 max-w-md" onSubmit={handleSubmit}>
-        <FormInput label="نام شرکت" name="company" value={formData.company} onChange={handleChange} />
-        <FormInput label="مبلغ پرداخت" name="amount" value={formData.amount} onChange={handleChange} />
-        <FormInput label="تاریخ پرداخت" name="date" type="date" value={formData.date} onChange={handleChange} />
-        <FormInput label="توضیحات" name="note" value={formData.note} onChange={handleChange} />
-        <button className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">ثبت واچر</button>
-      </form>
+      <h2 className="text-xl font-semibold text-teal-700 dark:text-teal-400 mb-4 flex items-center gap-2">
+        <Landmark size={20} /> لیست واچر شرکت‌ها
+      </h2>
+      <ul className="space-y-2">
+        {vouchers.map((v) => (
+          <li
+            key={v.id}
+            className="p-4 rounded bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow"
+          >
+            {v.company} - {v.amount} AFN
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default CompanyVoucher;
+export default CompanyVoucherList;
