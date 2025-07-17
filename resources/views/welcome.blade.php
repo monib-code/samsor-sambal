@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-    <title>Laravel 10 + React 18</title>
+    <meta charset="UTF-8">
+    <title>سامانه حسابداری</title>
     @viteReactRefresh
-    @vite('resources/js/app.jsx')
+    @vite(['resources/css/app.css', 'resources/js/react/index.jsx'])
 </head>
-<body>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <div id="app"></div>
 </body>
 </html>
